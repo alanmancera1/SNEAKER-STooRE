@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNEAKER STORE | Exclusividad & Nuevos Lanzamientos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Syne -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#0a0a0c',
+                            dark: '#121216',
+                            card: '#1a1a20',
+                            cardHover: '#24242c',
+                            cyan: '#00f0ff',
+                            cyanHover: '#00c8d6',
+                            red: '#ff2a5f',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(-5deg)' },
+                            '50%': { transform: 'translateY(-14px) rotate(-1deg)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4', filter: 'drop-shadow(0 0 15px rgba(0, 240, 255, 0.4))' },
+                            '50%': { opacity: '0.8', filter: 'drop-shadow(0 0 30px rgba(0, 240, 255, 0.8))' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #24242c;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .sneaker-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        .sneaker-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px -15px rgba(0, 240, 255, 0.25);
+        }
+        .sneaker-card:hover .sneaker-img {
+            transform: scale(1.1) rotate(-6deg) translateY(-4px);
+        }
+        .sneaker-img {
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+    </style>
+</head>
+<body class="bg-brand-black text-gray-100 font-sans min-h-full flex flex-col selection:bg-brand-cyan selection:text-black">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-brand-cyan via-blue-500 to-brand-red text-black text-xs font-black py-2 px-4 flex justify-between items-center z-50">
+        <span class="mx-auto flex items-center gap-2 tracking-wide uppercase">
+            <i class="fa-solid fa-bolt"></i> SNEAKER STORE EXCLUSIVE DROPS • ENVÍO EXPRESS A TODO EL PAÍS
+        </span>
+        <button onclick="this.parentElement.remove()" class="text-black/80 hover:text-black font-bold text-base leading-none">&times;</button>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-brand-dark/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-gradient-to-tr from-brand-cyan to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-brand-cyan/20 transform group-hover:scale-105 group-hover:rotate-3 transition duration-300">
+                    <svg class="w-7 h-7 text-black fill-current" viewBox="0 0 24 24">
+                        <path d="M21.71 11.29l-3-3a1 1 0 0 0-.71-.29H14V5a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3H5.41a1 1 0 0 0-.71.29l-3 3A1 1 0 0 0 1.41 13H3v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h1.59a1 1 0 0 0 .71-1.71zM9 6h3v2H9V6zm10 13H5v-6h14v6zm1.59-8H3.41L5.41 9H18.59l2 2z"/>
+                        <path d="M7 15h3v2H7zM14 15h3v2h-3z"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-black text-2xl tracking-tighter text-white leading-none uppercase">
+                        SNEAKER<span class="text-brand-cyan">STORE</span>
+                    </span>
+                    <span class="text-[9px] font-mono tracking-widest text-brand-cyan uppercase">Authentic Kicks & Drops</span>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Buscar Jordan, Dunk, Samba, New Balance..." 
+                       class="w-full bg-brand-card border border-white/10 rounded-full py-2.5 pl-11 pr-10 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Header Actions -->
+            <div class="flex items-center gap-3 md:gap-5">
+                <button onclick="openIaDocsModal()" class="hidden lg:flex items-center gap-1.5 bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan px-3 py-1.5 rounded-xl text-xs font-bold hover:bg-brand-cyan/20 transition">
+                    <i class="fa-solid fa-brain"></i> IA en los Negocios
+                </button>
+
+                <a href="#blog" class="hidden lg:flex items-center gap-1.5 text-xs font-bold text-gray-300 hover:text-brand-cyan transition">
+                    <i class="fa-solid fa-newspaper text-brand-cyan"></i> Blog
+                </a>
+
+                <!-- Auth / Login Button -->
+                <button id="authBtn" onclick="openAuthModal()" class="flex items-center gap-2 bg-brand-card hover:bg-white/10 border border-white/10 text-white px-3.5 py-2 rounded-2xl text-xs font-bold transition">
+                    <i class="fa-solid fa-user text-brand-cyan"></i>
+                    <span id="authBtnLabel">Iniciar Sesión</span>
+                </button>
+
+                <!-- Phone / WhatsApp Badge Button -->
+                <button onclick="openWhatsAppModal()" title="Configuración de Número de Atención" class="hidden sm:flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 px-3 py-1.5 rounded-full text-xs font-semibold transition">
+                    <i class="fa-brands fa-whatsapp text-sm text-emerald-400"></i>
+                    <span id="headerWspLabel">+52 55 8803 4872</span>
+                </button>
+
+                <!-- Cart Button -->
+                <button onclick="openCart()" class="relative bg-brand-card hover:bg-white/10 p-3 rounded-2xl border border-white/10 transition">
+                    <i class="fa-solid fa-bag-shopping text-xl text-white"></i>
+                    <span id="cartBadge" class="hidden absolute -top-1 -right-1 bg-brand-cyan text-black text-xs font-black w-5 h-5 rounded-full items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ADMIN BANNER (Visible when logged in as admin) -->
+    <div id="adminBanner" class="hidden bg-gradient-to-r from-purple-900 via-brand-dark to-purple-900 border-b border-purple-500/40 py-2.5 px-4 text-xs z-30">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2 text-purple-300 font-bold">
+                <i class="fa-solid fa-shield-halved text-purple-400 text-sm"></i>
+                <span>PANEL DE ADMINISTRACIÓN ACTIVO</span>
+                <span class="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded text-[10px] uppercase font-mono">Modo Edición</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="openAdminAddProductModal()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold px-3 py-1 rounded-xl transition text-[11px] flex items-center gap-1.5">
+                    <i class="fa-solid fa-plus"></i> Agregar Tenis al Catálogo
+                </button>
+                <button onclick="openWhatsAppModal()" class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/30 font-bold px-3 py-1 rounded-xl transition text-[11px] flex items-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp"></i> Ajustar WhatsApp
+                </button>
+                <button onclick="logoutUser()" class="text-gray-400 hover:text-red-400 font-bold text-[11px]">
+                    Cerrar Sesión Admin
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Body -->
+    <main class="flex-grow">
+        
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-b from-brand-dark via-brand-black to-brand-black overflow-hidden py-12 md:py-24 border-b border-white/5">
+            <div class="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#00f0ff_1px,transparent_1px)] [background-size:28px_28px]"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid md:grid-cols-2 items-center gap-10">
+                <div class="text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/40 text-brand-cyan text-xs font-extrabold uppercase tracking-widest">
+                        <i class="fa-solid fa-robot text-brand-cyan"></i> Asistente de IA Integrado (TENIS-Asistente 24/7)
+                    </div>
+                    <h1 class="font-display text-4xl sm:text-6xl font-black text-white leading-none tracking-tight">
+                        CULTURA SNEAKER EN SU <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-blue-400 to-brand-red">MÁXIMO NIVEL</span>.
+                    </h1>
+                    <p class="text-gray-400 text-base sm:text-lg max-w-xl leading-relaxed">
+                        Explora la colección más exclusiva de tenis originales. Modelos retro, lanzamientos limitados y atención personalizada con Inteligencia Artificial las 24 horas.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#catalogo" class="bg-brand-cyan hover:bg-brand-cyanHover text-black font-black px-8 py-4 rounded-2xl transition-all transform hover:-translate-y-1 shadow-xl shadow-brand-cyan/20 flex items-center gap-2">
+                            EXPLORAR COLECCIÓN <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <button onclick="toggleChatbot()" class="bg-brand-card hover:bg-white/10 text-white font-bold px-6 py-4 rounded-2xl border border-white/10 transition flex items-center gap-2">
+                            <i class="fa-solid fa-comments text-brand-cyan"></i> Hablar con TENIS-Asistente
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hero Interactive Sneaker Stage -->
+                <div class="relative flex justify-center items-center">
+                    <div class="absolute w-80 h-80 bg-brand-cyan/20 rounded-full blur-3xl animate-pulse-glow"></div>
+                    <div class="relative z-10 perspective-1000 text-center">
+                        <img id="heroImage" src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=900" 
+                             alt="Air Jordan 1 Retro High" 
+                             class="w-full max-w-md sm:max-w-lg object-contain animate-float drop-shadow-[0_30px_35px_rgba(0,0,0,0.8)] cursor-pointer hover:scale-105 transition duration-500"
+                             onclick="triggerHeroSpin()">
+                        <div class="mt-2">
+                            <span class="text-[10px] font-mono text-gray-400 uppercase tracking-widest bg-brand-card/80 px-3 py-1 rounded-full border border-white/10">
+                                💡 Haz clic en el tenis para efecto 360°
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Catalog Section -->
+        <section id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
+                <div>
+                    <h2 class="font-display text-3xl sm:text-4xl font-black text-white tracking-tight">
+                        CATÁLOGO DE MODELOS
+                    </h2>
+                    <p class="text-gray-400 text-sm mt-1" id="catalogSubtitle">Precios reales del mercado y disponibilidad por tallas</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                    <select id="brandFilterSelect" onchange="handleBrandSelect(this.value)" class="bg-brand-card border border-white/10 text-xs sm:text-sm text-gray-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-cyan">
+                        <option value="all">Todas las Marcas</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Jordan">Air Jordan</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="New Balance">New Balance</option>
+                        <option value="Puma">Puma</option>
+                    </select>
+
+                    <select id="sortSelect" onchange="handleSort(this.value)" class="bg-brand-card border border-white/10 text-xs sm:text-sm text-gray-200 rounded-xl px-4 py-2.5 focus:outline-none focus:border-brand-cyan">
+                        <option value="featured">Destacados</option>
+                        <option value="price-low">Precio: Menor a Mayor</option>
+                        <option value="price-high">Precio: Mayor a Menor</option>
+                        <option value="rating">Mejor Valorados</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sneaker Grid -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Products rendered via JS -->
+            </div>
+        </section>
+
+        <!-- BLOG SECTION -->
+        <section id="blog" class="bg-brand-dark/70 border-y border-white/10 py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/30 text-brand-cyan text-xs font-extrabold uppercase">
+                            <i class="fa-solid fa-rss"></i> Blog & Culture
+                        </div>
+                        <h2 class="font-display text-3xl sm:text-4xl font-black text-white mt-2">
+                            NOTICIAS, HISTORIA & DROPS
+                        </h2>
+                        <p class="text-gray-400 text-sm">Entérate de las tendencias globales e historia de tus tenis favoritos.</p>
+                    </div>
+
+                    <div class="w-full md:w-auto bg-brand-card p-3 rounded-2xl border border-white/10 flex flex-col gap-2">
+                        <span class="text-xs font-bold text-gray-300">Vincular Blog Externo (URL):</span>
+                        <div class="flex gap-2">
+                            <input type="url" id="externalBlogUrl" placeholder="https://mi-blog-sneakers.com" class="bg-brand-dark border border-white/10 text-xs rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-cyan flex-grow">
+                            <button onclick="linkExternalBlog()" class="bg-brand-cyan hover:bg-brand-cyanHover text-black text-xs font-bold px-4 py-2 rounded-xl transition">
+                                Vincular
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Articles Grid -->
+                <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <article class="bg-brand-card rounded-3xl overflow-hidden border border-white/5 hover:border-brand-cyan/40 transition group cursor-pointer">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=600" alt="History of Jordan 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 bg-brand-black/80 text-brand-cyan text-[10px] font-mono font-bold px-3 py-1 rounded-full border border-white/10">HISTORIA</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <span class="text-xs text-gray-400">12 de Noviembre, 2026 • 5 min de lectura</span>
+                            <h3 class="font-bold text-lg text-white group-hover:text-brand-cyan transition">Cómo el Air Jordan 1 Cambió la Historia del Calzado Urbano</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">De ser multado por la NBA en 1985 a convertirse en el sneaker más codiciado del planeta. Repasamos su evolución.</p>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="bg-brand-card rounded-3xl overflow-hidden border border-white/5 hover:border-brand-cyan/40 transition group cursor-pointer">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=600" alt="Guia de Cuidados Adidas Samba" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 bg-brand-black/80 text-brand-cyan text-[10px] font-mono font-bold px-3 py-1 rounded-full border border-white/10">GUÍA DE LIMPIEZA</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <span class="text-xs text-gray-400">08 de Noviembre, 2026 • 4 min de lectura</span>
+                            <h3 class="font-bold text-lg text-white group-hover:text-brand-cyan transition">Guía Definitiva: Cómo Limpiar Gamuza y Piel en tus Adidas Samba</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">Técnicas con cepillos de cerdas suaves, goma especial de gamuza y repelente hidrofóbico para mantener la piel suave e impecable.</p>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="bg-brand-card rounded-3xl overflow-hidden border border-white/5 hover:border-brand-cyan/40 transition group cursor-pointer">
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1607522370275-f14206abe5d3?auto=format&fit=crop&q=80&w=600" alt="Proximos Lanzamientos" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 bg-brand-black/80 text-brand-red text-[10px] font-mono font-bold px-3 py-1 rounded-full border border-white/10">DROPS</span>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <span class="text-xs text-gray-400">01 de Noviembre, 2026 • 4 min de lectura</span>
+                            <h3 class="font-bold text-lg text-white group-hover:text-brand-cyan transition">Calendario de Lanzamientos Exclusivos 2026</h3>
+                            <p class="text-gray-400 text-xs leading-relaxed">Fechas confirmadas para los próximos Drops de Travis Scott, colaboraciones con Nike Dunk y re-stock de Jordan 4.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark border-t border-white/10 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-brand-cyan rounded-xl flex items-center justify-center text-black font-black">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <span class="font-display font-black text-xl text-white">SNEAKER<span class="text-brand-cyan">STORE</span></span>
+                </div>
+                <p class="text-gray-400 text-xs leading-relaxed">
+                    Tienda especializada en venta de tenis 100% auténticos, lanzamientos limitados y modelos icónicos con atención asistida por Inteligencia Artificial.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Marcas Disponibles</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><a href="#catalogo" onclick="handleBrandSelect('Nike')" class="hover:text-brand-cyan">Nike Sportswear</a></li>
+                    <li><a href="#catalogo" onclick="handleBrandSelect('Jordan')" class="hover:text-brand-cyan">Air Jordan Retro</a></li>
+                    <li><a href="#catalogo" onclick="handleBrandSelect('Adidas')" class="hover:text-brand-cyan">Adidas Originals</a></li>
+                    <li><a href="#catalogo" onclick="handleBrandSelect('New Balance')" class="hover:text-brand-cyan">New Balance 9060 / 550</a></li>
+                    <li><a href="#catalogo" onclick="handleBrandSelect('Puma')" class="hover:text-brand-cyan">Puma Palermo</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Métodos de Pago</h4>
+                <div class="flex flex-wrap gap-2 text-gray-400 text-xl">
+                    <span class="bg-brand-card p-2 rounded border border-white/5"><i class="fa-brands fa-cc-visa text-blue-400"></i></span>
+                    <span class="bg-brand-card p-2 rounded border border-white/5"><i class="fa-brands fa-cc-mastercard text-red-500"></i></span>
+                    <span class="bg-brand-card p-2 rounded border border-white/5"><i class="fa-brands fa-paypal text-blue-500"></i></span>
+                    <span class="bg-brand-card p-2 rounded border border-white/5"><i class="fa-solid fa-barcode text-emerald-400" title="SPEI / OXXO"></i></span>
+                </div>
+                <p class="text-gray-500 text-xs mt-3">Envío asegurado en todas tus compras.</p>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Atención & WhatsApp</h4>
+                <div class="bg-brand-card p-3 rounded-2xl border border-white/10 text-xs space-y-2">
+                    <div class="text-emerald-400 font-bold flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-base"></i> Número Configurado:
+                    </div>
+                    <div id="footerWspNumber" class="text-white font-mono bg-black/40 p-2 rounded-xl text-center font-bold">
+                        +52 55 8803 4872
+                    </div>
+                    <button onclick="openWhatsAppModal()" class="w-full bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-bold py-2 rounded-xl transition text-xs">
+                        Modificar Número
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-500">
+            &copy; 2026 Sneaker Store (TENIS STORE). Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- PRODUCT DETAIL MODAL WITH SIZES -->
+    <div id="productModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-brand-dark border border-white/10 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative my-8">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 bg-brand-card hover:bg-white/20 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="grid md:grid-cols-2">
+                <div class="bg-brand-card p-8 flex flex-col items-center justify-center relative">
+                    <span id="modalBadge" class="absolute top-4 left-4 bg-brand-cyan text-black text-xs font-black px-3 py-1 rounded-full uppercase">
+                        Novedad
+                    </span>
+                    <img id="modalImg" src="" alt="Sneaker" class="w-full max-h-80 object-contain drop-shadow-2xl transform hover:scale-105 hover:-rotate-3 transition duration-300">
+                </div>
+
+                <div class="p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                    <div>
+                        <div id="modalBrand" class="text-brand-cyan font-black text-xs uppercase tracking-widest mb-1">NIKE</div>
+                        <h3 id="modalTitle" class="text-2xl font-black text-white leading-tight mb-2">Air Jordan 1 Retro</h3>
+                        
+                        <div class="flex items-center gap-3 mb-4">
+                            <span id="modalPrice" class="text-2xl font-black text-white">$4,699 MXN</span>
+                            <span id="modalPriceUSD" class="text-xs font-mono text-gray-400">($269 USD)</span>
+                        </div>
+
+                        <p id="modalDesc" class="text-gray-400 text-xs leading-relaxed mb-6">
+                            Diseñado con materiales de primera calidad, amortiguación Air de respuesta rápida y silueta clásica.
+                        </p>
+
+                        <!-- Size Selector -->
+                        <div class="space-y-2 mb-6">
+                            <label class="font-bold text-white text-xs uppercase tracking-wider block">Selecciona tu Talla (MX / CM):</label>
+                            <div id="modalSizes" class="grid grid-cols-4 gap-2"></div>
+                        </div>
+                    </div>
+
+                    <button id="modalAddBtn" onclick="addToCartFromModal()" class="w-full bg-brand-cyan hover:bg-brand-cyanHover text-black font-black py-4 rounded-2xl transition flex items-center justify-center gap-2 shadow-lg shadow-brand-cyan/20">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i> AGREGAR AL CARRITO
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART DRAWER -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
+        <div onclick="closeCart()" class="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-brand-dark border-l border-white/10 flex flex-col justify-between shadow-2xl">
+            <div class="p-6 border-b border-white/10 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-bag-shopping text-brand-cyan text-xl"></i>
+                    <h3 class="font-display font-black text-xl text-white">TU CARRITO</h3>
+                    <span id="cartItemCount" class="bg-brand-card text-gray-300 text-xs px-2.5 py-1 rounded-full font-mono border border-white/10">0 artículos</span>
+                </div>
+                <button onclick="closeCart()" class="text-gray-400 hover:text-white p-2">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div id="cartItemsContainer" class="flex-grow overflow-y-auto p-6 space-y-4"></div>
+
+            <div class="p-6 border-t border-white/10 bg-brand-card/40 space-y-4">
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between text-gray-400">
+                        <span>Envío Express:</span>
+                        <span class="text-emerald-400 font-bold">GRATIS</span>
+                    </div>
+                    <div class="flex justify-between text-base font-black text-white pt-2 border-t border-white/10">
+                        <span>TOTAL:</span>
+                        <span id="cartTotal" class="font-mono text-brand-cyan text-xl">$0 MXN</span>
+                    </div>
+                </div>
+
+                <button onclick="openCheckoutModal()" class="w-full bg-brand-cyan hover:bg-brand-cyanHover text-black font-black py-4 rounded-2xl transition flex items-center justify-center gap-2 shadow-lg shadow-brand-cyan/20">
+                    PROCEDER AL PAGO <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-brand-dark border border-white/10 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative my-8">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <h3 class="font-display font-black text-2xl text-white mb-2">CHECKOUT DE COMPRA</h3>
+            <p class="text-xs text-gray-400 mb-6">Ingresa tus datos de envío y selecciona tu método de pago preferido.</p>
+
+            <form onsubmit="processPayment(event)" class="space-y-6">
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-brand-cyan">1. Datos de Entrega</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <input type="text" required placeholder="Nombre completo" class="bg-brand-card border border-white/10 text-xs rounded-xl p-3 text-white focus:outline-none focus:border-brand-cyan">
+                        <input type="email" required placeholder="Correo electrónico" class="bg-brand-card border border-white/10 text-xs rounded-xl p-3 text-white focus:outline-none focus:border-brand-cyan">
+                    </div>
+                    <input type="text" required placeholder="Dirección completa con código postal" class="w-full bg-brand-card border border-white/10 text-xs rounded-xl p-3 text-white focus:outline-none focus:border-brand-cyan">
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-brand-cyan">2. Método de Pago</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <label class="cursor-pointer border border-white/10 bg-brand-card p-3 rounded-xl flex flex-col items-center justify-center gap-1 hover:border-brand-cyan has-[:checked]:border-brand-cyan has-[:checked]:bg-brand-cyan/10 transition">
+                            <input type="radio" name="payment" value="Tarjeta" checked class="hidden">
+                            <i class="fa-solid fa-credit-card text-xl text-blue-400"></i>
+                            <span class="text-xs font-bold text-white">Tarjeta</span>
+                        </label>
+                        <label class="cursor-pointer border border-white/10 bg-brand-card p-3 rounded-xl flex flex-col items-center justify-center gap-1 hover:border-brand-cyan has-[:checked]:border-brand-cyan has-[:checked]:bg-brand-cyan/10 transition">
+                            <input type="radio" name="payment" value="PayPal" class="hidden">
+                            <i class="fa-brands fa-paypal text-xl text-blue-500"></i>
+                            <span class="text-xs font-bold text-white">PayPal</span>
+                        </label>
+                        <label class="cursor-pointer border border-white/10 bg-brand-card p-3 rounded-xl flex flex-col items-center justify-center gap-1 hover:border-brand-cyan has-[:checked]:border-brand-cyan has-[:checked]:bg-brand-cyan/10 transition">
+                            <input type="radio" name="payment" value="Mercado Pago" class="hidden">
+                            <i class="fa-solid fa-wallet text-xl text-sky-400"></i>
+                            <span class="text-xs font-bold text-white">Mercado Pago</span>
+                        </label>
+                        <label class="cursor-pointer border border-white/10 bg-brand-card p-3 rounded-xl flex flex-col items-center justify-center gap-1 hover:border-brand-cyan has-[:checked]:border-brand-cyan has-[:checked]:bg-brand-cyan/10 transition">
+                            <input type="radio" name="payment" value="SPEI" class="hidden">
+                            <i class="fa-solid fa-building-columns text-xl text-purple-400"></i>
+                            <span class="text-xs font-bold text-white">SPEI Transfer</span>
+                        </label>
+                        <label class="cursor-pointer border border-white/10 bg-brand-card p-3 rounded-xl flex flex-col items-center justify-center gap-1 hover:border-brand-cyan has-[:checked]:border-brand-cyan has-[:checked]:bg-brand-cyan/10 transition col-span-2 sm:col-span-1">
+                            <input type="radio" name="payment" value="OXXO" class="hidden">
+                            <i class="fa-solid fa-store text-xl text-amber-500"></i>
+                            <span class="text-xs font-bold text-white">OXXO Pay</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-black/40 p-4 rounded-2xl border border-white/10 flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-gray-400 block">Total a pagar:</span>
+                        <span id="checkoutTotal" class="font-mono font-black text-2xl text-brand-cyan">$0 MXN</span>
+                    </div>
+                    <button type="submit" class="bg-brand-cyan hover:bg-brand-cyanHover text-black font-black px-8 py-3.5 rounded-xl transition">
+                        CONFIRMAR PAGO
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- WHATSAPP NUMBER MODAL -->
+    <div id="wspModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-brand-dark border border-white/10 rounded-3xl max-w-md w-full p-6 text-center shadow-2xl relative">
+            <button onclick="closeWhatsAppModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <h3 class="font-display font-black text-xl text-white mb-2">CONFIGURAR NÚMERO DE WHATSAPP</h3>
+            <p class="text-xs text-gray-400 mb-4">Ingresa el número al cual deseas que el Chatbot y los usuarios de la tienda puedan enviar mensajes.</p>
+
+            <form onsubmit="saveWhatsAppNumber(event)" class="space-y-4">
+                <input type="tel" id="wspInputNumber" required placeholder="Ej. +525588034872" value="+52 55 8803 4872"
+                       class="w-full bg-brand-card border border-white/10 rounded-xl p-3 text-sm text-center font-mono text-white focus:outline-none focus:border-emerald-500">
+                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-600 text-black font-black py-3 rounded-xl transition">
+                    VINCULAR NÚMERO
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- IA EN LOS NEGOCIOS DOCS MODAL -->
+    <div id="iaDocsModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-brand-dark border border-brand-cyan/40 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl relative my-8 text-left space-y-6 max-h-[85vh] overflow-y-auto">
+            <button onclick="closeIaDocsModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-brand-cyan/20 text-brand-cyan rounded-2xl flex items-center justify-center text-2xl font-black">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div>
+                    <h3 class="font-display font-black text-2xl text-white">Inteligencia Artificial en los Negocios</h3>
+                    <span class="text-xs text-brand-cyan font-mono">Chatbot de Atención al Cliente 24/7 (TENIS-Asistente)</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs text-gray-300 leading-relaxed border-t border-white/10 pt-4">
+                <div class="bg-brand-card p-4 rounded-2xl border border-white/10 space-y-2">
+                    <h4 class="font-bold text-white text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-bullseye text-brand-cyan"></i> Evaluación e Inclusión
+                    </h4>
+                    <p>Se integró un agente conversacional inteligente (Chatbot) en la esquina inferior derecha del portal web. Este asistente está basado en Procesamiento de Lenguaje Natural (NLP) para responder dudas sobre marcas, precios, tallas, modelos, disponibilidad y métodos de pago.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-brand-card p-4 rounded-2xl border border-white/10">
+                        <h5 class="font-bold text-white mb-1 text-xs text-brand-cyan">Paso 1: Arquitectura RAG</h5>
+                        <p class="text-[11px] text-gray-400">Embeddings vectoriales (Pinecone / ChromaDB) que conectan el catálogo y la base de datos oficial para evitar respuestas erróneas.</p>
+                    </div>
+                    <div class="bg-brand-card p-4 rounded-2xl border border-white/10">
+                        <h5 class="font-bold text-white mb-1 text-xs text-brand-cyan">Paso 2: System Prompt</h5>
+                        <p class="text-[11px] text-gray-400">Reglas estrictas de personalidad, recomendación activa de presupuesto, filtro de tallas y protección de datos bancarios.</p>
+                    </div>
+                    <div class="bg-brand-card p-4 rounded-2xl border border-white/10">
+                        <h5 class="font-bold text-white mb-1 text-xs text-brand-cyan">Paso 3: UX Conversacional</h5>
+                        <p class="text-[11px] text-gray-400">Generación interactiva de tarjetas de producto con botón directo para agregar al carrito dentro del chat.</p>
+                    </div>
+                </div>
+
+                <div class="bg-black/50 p-4 rounded-2xl border border-white/10 font-mono text-[11px] text-gray-300">
+                    <span class="text-brand-cyan font-bold block mb-1">// System Prompt oficial pre-configurado en TENIS-Asistente:</span>
+                    "Eres TENIS-Asistente, el asesor virtual oficial de TENIS STORE. Tu objetivo es ayudar a los clientes a encontrar tenis ajustados a sus necesidades y presupuesto (ej. Nike de menos de $2,000 MXN en talla 27). Atiende de forma amable y profesional."
+                </div>
+            </div>
+
+            <button onclick="closeIaDocsModal()" class="w-full bg-brand-cyan text-black font-black py-3 rounded-xl transition">
+                ENTENDIDO & CERRAR
+            </button>
+        </div>
+    </div>
+
+    <!-- RECEIPT SUCCESS MODAL -->
+    <div id="receiptModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-brand-dark border border-brand-cyan/40 rounded-3xl max-w-md w-full p-8 text-center shadow-2xl relative">
+            <div class="w-16 h-16 bg-brand-cyan/20 border border-brand-cyan rounded-full flex items-center justify-center mx-auto mb-4 text-brand-cyan text-3xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="font-display font-black text-2xl text-white mb-2">¡PEDIDO CONFIRMADO!</h3>
+            <p class="text-xs text-gray-400 mb-6">Tu orden ha sido registrada exitosamente.</p>
+            
+            <div class="bg-brand-card p-4 rounded-xl border border-white/10 text-left font-mono text-xs space-y-2 mb-6">
+                <div class="flex justify-between text-gray-400">
+                    <span>Folio:</span>
+                    <span id="receiptFolio" class="text-white">#SS-9842</span>
+                </div>
+                <div class="flex justify-between text-gray-400">
+                    <span>Método de Pago:</span>
+                    <span id="receiptMethod" class="text-white">Tarjeta</span>
+                </div>
+                <div class="flex justify-between text-gray-400 pt-2 border-t border-white/10 font-bold">
+                    <span>Total Pagado:</span>
+                    <span id="receiptTotal" class="text-brand-cyan text-sm">$0 MXN</span>
+                </div>
+            </div>
+
+            <button onclick="closeReceiptModal()" class="w-full bg-brand-cyan text-black font-black py-3 rounded-xl">
+                FINALIZAR
+            </button>
+        </div>
+    </div>
+
+    <!-- AUTHENTICATION MODAL (CLIENT & ADMIN LOGIN) -->
+    <div id="authModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-brand-dark border border-white/10 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Navigation Tabs -->
+            <div class="flex border-b border-white/10 mb-6 gap-4">
+                <button id="tabClientBtn" onclick="switchAuthTab('client')" class="pb-3 text-sm font-bold text-brand-cyan border-b-2 border-brand-cyan transition flex items-center gap-2">
+                    <i class="fa-solid fa-user"></i> Comprador
+                </button>
+                <button id="tabAdminBtn" onclick="switchAuthTab('admin')" class="pb-3 text-sm font-bold text-gray-400 border-b-2 border-transparent transition flex items-center gap-2 hover:text-white">
+                    <i class="fa-solid fa-user-shield"></i> Administrador
+                </button>
+            </div>
+
+            <!-- Client Form -->
+            <form id="clientLoginForm" onsubmit="handleClientLogin(event)" class="space-y-4">
+                <h3 class="font-display font-black text-xl text-white mb-1">¡Bienvenido a Sneaker Store!</h3>
+                <p class="text-xs text-gray-400 mb-4">Inicia sesión para realizar tus compras y guardar tus tallas preferidas.</p>
+
+                <div>
+                    <label class="text-[11px] font-bold text-gray-300 block mb-1">Correo Electrónico</label>
+                    <input type="email" id="clientEmailInput" required placeholder="cliente@ejemplo.com" class="w-full bg-brand-card border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-brand-cyan">
+                </div>
+                <div>
+                    <label class="text-[11px] font-bold text-gray-300 block mb-1">Contraseña</label>
+                    <input type="password" id="clientPassInput" required placeholder="••••••••" class="w-full bg-brand-card border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-brand-cyan">
+                </div>
+
+                <button type="submit" class="w-full bg-brand-cyan hover:bg-brand-cyanHover text-black font-black py-3.5 rounded-xl transition shadow-lg shadow-brand-cyan/20 text-xs uppercase tracking-wider">
+                    INICIAR SESIÓN (COMPRADOR)
+                </button>
+            </form>
+
+            <!-- Admin Form -->
+            <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" class="hidden space-y-4">
+                <div class="bg-purple-900/30 border border-purple-500/30 p-3 rounded-2xl flex items-center gap-3">
+                    <i class="fa-solid fa-lock text-purple-400 text-xl"></i>
+                    <div>
+                        <h4 class="font-bold text-xs text-purple-200">Acceso Privado de Administración</h4>
+                        <p class="text-[10px] text-purple-300/80">Gestión de catálogo, productos y configuración.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-[11px] font-bold text-gray-300 block mb-1">Usuario Admin</label>
+                    <input type="text" id="adminUser" required placeholder="admin" value="admin" class="w-full bg-brand-card border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-400">
+                </div>
+                <div>
+                    <label class="text-[11px] font-bold text-gray-300 block mb-1">Contraseña Master</label>
+                    <input type="password" id="adminPass" required placeholder="••••••••" value="admin123" class="w-full bg-brand-card border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-purple-400">
+                </div>
+
+                <p class="text-[10px] text-gray-500 italic">💡 Credenciales demo prellenadas: usuario <b>admin</b> / contraseña <b>admin123</b></p>
+
+                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-black py-3.5 rounded-xl transition shadow-lg shadow-purple-600/30 text-xs uppercase tracking-wider">
+                    ENTRAR COMO ADMINISTRADOR
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ADMIN ADD PRODUCT MODAL -->
+    <div id="adminAddModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-brand-dark border border-purple-500/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+            <button onclick="closeAdminAddProductModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <h3 class="font-display font-black text-xl text-white mb-1 flex items-center gap-2">
+                <i class="fa-solid fa-plus-circle text-purple-400"></i> AGREGAR NUEVO TENIS
+            </h3>
+            <p class="text-xs text-gray-400 mb-4">Añade un nuevo par con su foto e información al catálogo.</p>
+
+            <form onsubmit="handleAddNewProduct(event)" class="space-y-3">
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-300 block mb-1">Marca</label>
+                        <select id="newProdBrand" class="w-full bg-brand-card border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-400">
+                            <option value="Nike">Nike</option>
+                            <option value="Jordan">Jordan</option>
+                            <option value="Adidas">Adidas</option>
+                            <option value="New Balance">New Balance</option>
+                            <option value="Puma">Puma</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-300 block mb-1">Etiqueta/Badge</label>
+                        <input type="text" id="newProdBadge" placeholder="Ej. Lanzamiento" value="Nuevo Modelo" class="w-full bg-brand-card border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-[11px] font-bold text-gray-300 block mb-1">Nombre del Modelo</label>
+                    <input type="text" id="newProdName" required placeholder="Ej. Nike Air Max 90 OG" class="w-full bg-brand-card border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-400">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-300 block mb-1">Precio (MXN)</label>
+                        <input type="number" id="newProdPrice" required placeholder="1999" class="w-full bg-brand-card border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-400">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-gray-300 block mb-1">Precio Aprox (USD)</label>
+                        <input type="number" id="newProdUsd" required placeholder="115" class="w-full bg-brand-card border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="text-[11px] font-bold text-gray-300 block mb-1">URL de la Foto del Tenis</label>
+                    <input type="url" id="newProdImg" required placeholder="https://images.unsplash.com/photo-..." class="w-full bg-brand-card border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-400">
+                </div>
+
+                <div>
+                    <label class="text-[11px] font-bold text-gray-300 block mb-1">Descripción</label>
+                    <textarea id="newProdDesc" rows="2" placeholder="Detalles de materiales y diseño..." class="w-full bg-brand-card border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-purple-400"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-black py-3 rounded-xl transition text-xs uppercase tracking-wider">
+                    PUBLICAR EN CATÁLOGO
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FLOATING CHATBOT WIDGET (TENIS-ASISTENTE IA) -->
+    <div class="fixed bottom-5 right-5 z-40">
+        <button onclick="toggleChatbot()" class="bg-brand-cyan hover:bg-brand-cyanHover text-black p-4 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 relative">
+            <i class="fa-solid fa-headset text-2xl"></i>
+            <span class="absolute -top-1 -right-1 bg-brand-red w-3.5 h-3.5 rounded-full animate-ping"></span>
+            <span class="absolute -top-1 -right-1 bg-brand-red w-3.5 h-3.5 rounded-full"></span>
+        </button>
+
+        <div id="chatWindow" class="hidden absolute bottom-16 right-0 w-[90vw] sm:w-96 bg-brand-dark border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[500px]">
+            <div class="bg-brand-card p-4 border-b border-white/10 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-brand-cyan text-black font-black rounded-full flex items-center justify-center text-xs">
+                        TA
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm text-white leading-tight">TENIS-Asistente 24/7</h4>
+                        <span class="text-[10px] text-emerald-400 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span> Asesor Virtual Activo (NLP)
+                        </span>
+                    </div>
+                </div>
+                <button onclick="toggleChatbot()" class="text-gray-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="bg-emerald-500/10 border-b border-emerald-500/20 p-2 text-center px-4 flex items-center justify-between">
+                <div class="text-[11px] text-emerald-300 font-semibold truncate">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i> WhatsApp: <span id="chatWspNumber">+52 55 8803 4872</span>
+                </div>
+                <button onclick="openWhatsAppModal()" class="text-[10px] bg-emerald-500/30 text-white px-2 py-0.5 rounded font-bold">
+                    Editar
+                </button>
+            </div>
+
+            <div id="chatMessages" class="flex-grow p-4 overflow-y-auto space-y-3 text-xs">
+                <div class="flex gap-2.5">
+                    <div class="w-7 h-7 rounded-full bg-brand-cyan/20 text-brand-cyan flex items-center justify-center flex-shrink-0 text-xs">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-brand-card p-3 rounded-2xl rounded-tl-none border border-white/5 text-gray-200 max-w-[85%] leading-relaxed">
+                        ¡Hola! Soy <b>TENIS-Asistente</b>. 👟 ¿Qué tipo de tenis estás buscando hoy? Dime tu marca preferida, presupuesto o talla.
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-2 border-t border-white/5 bg-brand-card/30 flex gap-1.5 overflow-x-auto">
+                <button onclick="sendQuickReply('Busco unos tenis Nike para correr, que cuesten menos de $2,000 en talla 27')" class="text-[10px] bg-brand-card text-brand-cyan px-2.5 py-1 rounded-full whitespace-nowrap border border-brand-cyan/30 hover:border-brand-cyan">
+                    ⚡ Prueba Prompt Nike < $2,000
+                </button>
+                <button onclick="sendQuickReply('¿Tienen Adidas Samba en talla 26.5?')" class="text-[10px] bg-brand-card text-gray-300 px-2.5 py-1 rounded-full whitespace-nowrap border border-white/10 hover:border-brand-cyan">
+                    👟 Adidas Samba
+                </button>
+                <button onclick="triggerWhatsAppChat()" class="text-[10px] bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-full whitespace-nowrap border border-emerald-500/30">
+                    💬 WhatsApp Directo
+                </button>
+            </div>
+
+            <form onsubmit="handleChatSubmit(event)" class="p-3 bg-brand-card border-t border-white/10 flex gap-2">
+                <input type="text" id="chatInput" placeholder="Escribe tu consulta o presupuesto..." class="flex-grow bg-brand-dark border border-white/10 rounded-full px-4 py-2 text-xs text-white focus:outline-none focus:border-brand-cyan">
+                <button type="submit" class="bg-brand-cyan hover:bg-brand-cyanHover text-black w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed top-24 right-5 z-50 transform translate-x-72 transition-transform duration-300 bg-brand-cyan text-black font-bold px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-lg"></i>
+        <span id="toastMsg" class="text-xs">Producto agregado</span>
+    </div>
+
+    <!-- APP SCRIPT -->
+    <script>
+        const SNEAKERS = [
+            {
+                id: 1,
+                brand: "Nike",
+                name: "Nike Revolution 6 NN Running",
+                price: 1699,
+                usdPrice: 95,
+                category: "running",
+                rating: 4.8,
+                reviews: 94,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=600",
+                badge: "Económico & Perfomance",
+                description: "Tenis deportivos para correr de respuesta ligera con malla transpirable y excelente amortiguación en asfalto.",
+                sizes: [25.5, 26, 26.5, 27, 27.5, 28]
+            },
+            {
+                id: 2,
+                brand: "Nike",
+                name: "Air Jordan 1 Retro High OG 'Chicago'",
+                price: 4699,
+                usdPrice: 269,
+                category: "hype",
+                rating: 4.9,
+                reviews: 128,
+                image: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=600",
+                badge: "Top Bestseller",
+                description: "Silueta icónica de 1985 con piel de primera calidad y amortiguación Air.",
+                sizes: [25.5, 26, 26.5, 27, 27.5, 28, 29]
+            },
+            {
+                id: 3,
+                brand: "Nike",
+                name: "Nike Dunk Low Retro 'Panda'",
+                price: 2799,
+                usdPrice: 159,
+                category: "mas-vendidos",
+                rating: 4.8,
+                reviews: 210,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=600",
+                badge: "Más Vendido",
+                description: "La combinación en blanco y negro más versátil para streetwear cotidiano.",
+                sizes: [25, 26, 27, 27.5, 28]
+            },
+            {
+                id: 4,
+                brand: "Adidas",
+                name: "Adidas Samba OG 'Cloud White'",
+                price: 2499,
+                usdPrice: 139,
+                category: "nuevos",
+                rating: 4.7,
+                reviews: 95,
+                image: "https://images.unsplash.com/photo-1512374382149-233c42b6a83b?auto=format&fit=crop&q=80&w=600",
+                badge: "Tendencia Exclusiva",
+                description: "Fotografía real e impecable del tenis Samba OG. Piel suave en Cloud White con suela de goma clásica.",
+                sizes: [25.5, 26, 26.5, 27]
+            },
+            {
+                id: 5,
+                brand: "Adidas",
+                name: "Adidas Campus 00s 'Core Black'",
+                price: 2699,
+                usdPrice: 149,
+                category: "mas-vendidos",
+                rating: 4.9,
+                reviews: 184,
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&q=80&w=600",
+                badge: "Skatestyle 00s",
+                description: "Silueta chunky inspirada en el skate de los años 2000 con lengüeta acolchada y las 3 franjas anchas en contraste.",
+                sizes: [25.5, 26, 27, 27.5, 28, 28.5]
+            },
+            {
+                id: 6,
+                brand: "New Balance",
+                name: "New Balance 9060 'Sea Salt'",
+                price: 3899,
+                usdPrice: 219,
+                category: "hype",
+                rating: 5.0,
+                reviews: 42,
+                image: "https://images.unsplash.com/photo-1607522370275-f14206abe5d3?auto=format&fit=crop&q=80&w=600",
+                badge: "Exclusivo",
+                description: "Diseño futurista de doble densidad con suela esculpida ABZORB.",
+                sizes: [26, 27, 27.5, 28, 29]
+            },
+            {
+                id: 7,
+                brand: "Puma",
+                name: "Puma Palermo Special 'OG'",
+                price: 2199,
+                usdPrice: 125,
+                category: "nuevos",
+                rating: 4.6,
+                reviews: 38,
+                image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&q=80&w=600",
+                badge: "Retro Drop",
+                description: "Estética retro italiana con detalles dorados y suela de goma vintage.",
+                sizes: [25, 26, 27, 28]
+            },
+            {
+                id: 8,
+                brand: "Jordan",
+                name: "Air Jordan 4 Retro 'Military Black'",
+                price: 5499,
+                usdPrice: 310,
+                category: "hype",
+                rating: 5.0,
+                reviews: 156,
+                image: "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&q=80&w=600",
+                badge: "Hype Release",
+                description: "Detalles en malla translúcida y combinaciones de gris y negro premium.",
+                sizes: [26, 26.5, 27, 28, 29]
+            }
+        ];
+
+        // Global State
+        let cart = [];
+        let currentWspNumber = "+52 55 8803 4872";
+        let currentUser = null; 
+        let activeSelectedSize = null;
+        let activeModalProduct = null;
+        let activeAuthTab = 'client';
+
+        window.onload = function() {
+            renderProducts(SNEAKERS);
+        };
+
+        // Render Product Catalog
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            if (items.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-gray-400">
+                        <i class="fa-solid fa-shoe-prints text-4xl mb-3 text-brand-cyan opacity-40"></i>
+                        <p class="text-sm">No se encontraron modelos con el criterio seleccionado.</p>
+                    </div>`;
+                return;
+            }
+
+            grid.innerHTML = items.map(sneaker => `
+                <div class="sneaker-card bg-brand-card rounded-3xl p-5 border border-white/5 relative flex flex-col justify-between group">
+                    <span class="absolute top-4 left-4 z-10 bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/40 text-[10px] font-black px-2.5 py-1 rounded-full uppercase">
+                        ${sneaker.badge}
+                    </span>
+                    
+                    <div class="h-52 flex items-center justify-center p-4 cursor-pointer" onclick="openProductModal(${sneaker.id})">
+                        <img src="${sneaker.image}" alt="${sneaker.name}" class="sneaker-img max-h-44 object-contain filter drop-shadow-xl">
+                    </div>
+
+                    <div class="space-y-3 mt-2">
+                        <div class="flex justify-between items-center text-xs text-gray-400">
+                            <span class="font-bold text-brand-cyan uppercase">${sneaker.brand}</span>
+                            <span><i class="fa-solid fa-star text-amber-400"></i> ${sneaker.rating} (${sneaker.reviews})</span>
+                        </div>
+
+                        <h3 class="font-bold text-base text-white leading-snug line-clamp-1 cursor-pointer hover:text-brand-cyan transition" onclick="openProductModal(${sneaker.id})">
+                            ${sneaker.name}
+                        </h3>
+
+                        <div class="flex items-baseline justify-between pt-1">
+                            <div>
+                                <span class="font-mono font-black text-xl text-white">$${sneaker.price.toLocaleString()} MXN</span>
+                                <span class="block text-[10px] font-mono text-gray-400">($${sneaker.usdPrice} USD)</span>
+                            </div>
+
+                            <button onclick="openProductModal(${sneaker.id})" class="bg-brand-cyan hover:bg-brand-cyanHover text-black p-3 rounded-2xl transition flex items-center justify-center shadow-md">
+                                <i class="fa-solid fa-plus text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleBrandSelect(brand) {
+            document.getElementById('brandFilterSelect').value = brand;
+            filterAndRender();
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            document.getElementById('clearSearchBtn').classList.toggle('hidden', query === '');
+            filterAndRender();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            filterAndRender();
+        }
+
+        function handleSort() {
+            filterAndRender();
+        }
+
+        function filterAndRender() {
+            const brand = document.getElementById('brandFilterSelect').value;
+            const sort = document.getElementById('sortSelect').value;
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            let filtered = SNEAKERS.filter(item => {
+                const matchesBrand = brand === 'all' || item.brand.toLowerCase() === brand.toLowerCase();
+                const matchesQuery = item.name.toLowerCase().includes(query) || item.brand.toLowerCase().includes(query);
+                return matchesBrand && matchesQuery;
+            });
+
+            if (sort === 'price-low') filtered.sort((a,b) => a.price - b.price);
+            if (sort === 'price-high') filtered.sort((a,b) => b.price - a.price);
+            if (sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+
+            renderProducts(filtered);
+        }
+
+        function triggerHeroSpin() {
+            const img = document.getElementById('heroImage');
+            img.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            img.style.transform = 'rotate(360deg) scale(1.1)';
+            setTimeout(() => { img.style.transform = ''; }, 800);
+        }
+
+        // Modals Logic
+        function openProductModal(id) {
+            activeModalProduct = SNEAKERS.find(s => s.id === id);
+            if (!activeModalProduct) return;
+
+            document.getElementById('modalBrand').innerText = activeModalProduct.brand;
+            document.getElementById('modalTitle').innerText = activeModalProduct.name;
+            document.getElementById('modalPrice').innerText = `$${activeModalProduct.price.toLocaleString()} MXN`;
+            document.getElementById('modalPriceUSD').innerText = `($${activeModalProduct.usdPrice} USD)`;
+            document.getElementById('modalDesc').innerText = activeModalProduct.description;
+            document.getElementById('modalImg').src = activeModalProduct.image;
+            document.getElementById('modalBadge').innerText = activeModalProduct.badge;
+
+            const sizesContainer = document.getElementById('modalSizes');
+            activeSelectedSize = activeModalProduct.sizes[0];
+
+            sizesContainer.innerHTML = activeModalProduct.sizes.map(size => `
+                <button type="button" onclick="selectSize(${size}, this)" 
+                        class="size-btn border ${size === activeSelectedSize ? 'border-brand-cyan bg-brand-cyan/20 text-brand-cyan font-bold' : 'border-white/10 text-gray-300 hover:border-white/40'} py-2 rounded-xl text-xs font-mono transition">
+                    ${size} MX
+                </button>
+            `).join('');
+
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function selectSize(size, btnEl) {
+            activeSelectedSize = size;
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.className = 'size-btn border border-white/10 text-gray-300 hover:border-white/40 py-2 rounded-xl text-xs font-mono transition';
+            });
+            btnEl.className = 'size-btn border border-brand-cyan bg-brand-cyan/20 text-brand-cyan font-bold py-2 rounded-xl text-xs font-mono transition';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        function addToCartFromModal() {
+            if (!activeModalProduct || !activeSelectedSize) return;
+            addItemToCart(activeModalProduct, activeSelectedSize);
+            closeProductModal();
+        }
+
+        function addItemToCart(product, size) {
+            const existingIndex = cart.findIndex(i => i.id === product.id && i.size === size);
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += 1;
+            } else {
+                cart.push({ ...product, size: size, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast(`Agregado: ${product.name} (${size} MX)`);
+        }
+
+        function openCart() {
+            document.getElementById('cartDrawer').classList.remove('hidden');
+        }
+
+        function closeCart() {
+            document.getElementById('cartDrawer').classList.add('hidden');
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const badge = document.getElementById('cartBadge');
+            const itemCount = document.getElementById('cartItemCount');
+            const totalEl = document.getElementById('cartTotal');
+
+            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            badge.innerText = totalQty;
+            badge.classList.toggle('hidden', totalQty === 0);
+            badge.classList.toggle('flex', totalQty > 0);
+            itemCount.innerText = `${totalQty} artículos`;
+            totalEl.innerText = `$${totalPrice.toLocaleString()} MXN`;
+            document.getElementById('checkoutTotal').innerText = `$${totalPrice.toLocaleString()} MXN`;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-gray-400 space-y-3">
+                        <i class="fa-solid fa-bag-shopping text-4xl text-gray-600"></i>
+                        <p class="text-xs">Tu carrito está vacío.</p>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = cart.map((item, idx) => `
+                <div class="bg-brand-card p-3 rounded-2xl border border-white/10 flex gap-3 items-center">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain bg-black/30 p-1 rounded-xl">
+                    <div class="flex-grow">
+                        <h4 class="text-xs font-bold text-white line-clamp-1">${item.name}</h4>
+                        <div class="text-[10px] text-gray-400">Talla: <span class="text-brand-cyan font-bold">${item.size} MX</span></div>
+                        <div class="text-xs font-mono font-bold text-white mt-1">$${(item.price * item.qty).toLocaleString()} MXN</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeCartQty(${idx}, -1)" class="w-6 h-6 bg-brand-dark hover:bg-white/10 rounded-lg text-white text-xs font-bold">-</button>
+                        <span class="text-xs font-mono">${item.qty}</span>
+                        <button onclick="changeCartQty(${idx}, 1)" class="w-6 h-6 bg-brand-dark hover:bg-white/10 rounded-lg text-white text-xs font-bold">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function changeCartQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                showToast("Tu carrito está vacío");
+                return;
+            }
+            closeCart();
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function processPayment(e) {
+            e.preventDefault();
+            const method = document.querySelector('input[name="payment"]:checked').value;
+            const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            
+            document.getElementById('receiptFolio').innerText = `#SS-${Math.floor(1000 + Math.random() * 9000)}`;
+            document.getElementById('receiptMethod').innerText = method;
+            document.getElementById('receiptTotal').innerText = `$${total.toLocaleString()} MXN`;
+
+            cart = [];
+            updateCartUI();
+            closeCheckoutModal();
+            document.getElementById('receiptModal').classList.remove('hidden');
+        }
+
+        function closeReceiptModal() {
+            document.getElementById('receiptModal').classList.add('hidden');
+        }
+
+        function openIaDocsModal() {
+            document.getElementById('iaDocsModal').classList.remove('hidden');
+        }
+
+        function closeIaDocsModal() {
+            document.getElementById('iaDocsModal').classList.add('hidden');
+        }
+
+        // Auth
+        function openAuthModal() {
+            document.getElementById('authModal').classList.remove('hidden');
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').classList.add('hidden');
+        }
+
+        function switchAuthTab(tab) {
+            activeAuthTab = tab;
+            const clientBtn = document.getElementById('tabClientBtn');
+            const adminBtn = document.getElementById('tabAdminBtn');
+            const clientForm = document.getElementById('clientLoginForm');
+            const adminForm = document.getElementById('adminLoginForm');
+
+            if (tab === 'client') {
+                clientBtn.className = 'pb-3 text-sm font-bold text-brand-cyan border-b-2 border-brand-cyan transition flex items-center gap-2';
+                adminBtn.className = 'pb-3 text-sm font-bold text-gray-400 border-b-2 border-transparent transition flex items-center gap-2 hover:text-white';
+                clientForm.classList.remove('hidden');
+                adminForm.classList.add('hidden');
+            } else {
+                adminBtn.className = 'pb-3 text-sm font-bold text-purple-400 border-b-2 border-purple-400 transition flex items-center gap-2';
+                clientBtn.className = 'pb-3 text-sm font-bold text-gray-400 border-b-2 border-transparent transition flex items-center gap-2 hover:text-white';
+                adminForm.classList.remove('hidden');
+                clientForm.classList.add('hidden');
+            }
+        }
+
+        function handleClientLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('clientEmailInput').value;
+            currentUser = { email: email, role: 'client' };
+            applyUserSession();
+            closeAuthModal();
+            showToast(`¡Bienvenido ${email}!`);
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+
+            if (user === 'admin' && pass === 'admin123') {
+                currentUser = { email: 'admin@sneakerstore.com', role: 'admin' };
+                applyUserSession();
+                closeAuthModal();
+                showToast("Acceso Concedido: Administrador");
+            } else {
+                alert("Credenciales incorrectas. Usa usuario: admin / clave: admin123");
+            }
+        }
+
+        function applyUserSession() {
+            const label = document.getElementById('authBtnLabel');
+            const adminBanner = document.getElementById('adminBanner');
+
+            if (currentUser) {
+                label.innerText = currentUser.role === 'admin' ? 'Admin Active' : currentUser.email.split('@')[0];
+                if (currentUser.role === 'admin') {
+                    adminBanner.classList.remove('hidden');
+                } else {
+                    adminBanner.classList.add('hidden');
+                }
+            } else {
+                label.innerText = 'Iniciar Sesión';
+                adminBanner.classList.add('hidden');
+            }
+        }
+
+        function logoutUser() {
+            currentUser = null;
+            applyUserSession();
+            closeAuthModal();
+            showToast("Sesión cerrada correctamente");
+        }
+
+        function openAdminAddProductModal() {
+            document.getElementById('adminAddModal').classList.remove('hidden');
+        }
+
+        function closeAdminAddProductModal() {
+            document.getElementById('adminAddModal').classList.add('hidden');
+        }
+
+        function handleAddNewProduct(e) {
+            e.preventDefault();
+            const newProd = {
+                id: Date.now(),
+                brand: document.getElementById('newProdBrand').value,
+                badge: document.getElementById('newProdBadge').value || 'Nuevo',
+                name: document.getElementById('newProdName').value,
+                price: parseFloat(document.getElementById('newProdPrice').value),
+                usdPrice: parseFloat(document.getElementById('newProdUsd').value),
+                image: document.getElementById('newProdImg').value,
+                description: document.getElementById('newProdDesc').value || 'Descripción del nuevo modelo.',
+                rating: 5.0,
+                reviews: 1,
+                sizes: [25.5, 26, 27, 28]
+            };
+
+            SNEAKERS.unshift(newProd);
+            filterAndRender();
+            closeAdminAddProductModal();
+            showToast("¡Nuevo tenis publicado en el catálogo!");
+        }
+
+        function openWhatsAppModal() {
+            document.getElementById('wspModal').classList.remove('hidden');
+        }
+
+        function closeWhatsAppModal() {
+            document.getElementById('wspModal').classList.add('hidden');
+        }
+
+        function saveWhatsAppNumber(e) {
+            e.preventDefault();
+            const num = document.getElementById('wspInputNumber').value.trim();
+            if (num) {
+                currentWspNumber = num;
+                document.getElementById('headerWspLabel').innerText = num;
+                document.getElementById('footerWspNumber').innerText = num;
+                document.getElementById('chatWspNumber').innerText = num;
+                closeWhatsAppModal();
+                showToast("Número de WhatsApp actualizado");
+            }
+        }
+
+        function triggerWhatsAppChat() {
+            const cleanNum = currentWspNumber.replace(/[^0-9]/g, '');
+            window.open(`https://wa.me/${cleanNum}?text=Hola,%20quisiera%20consultar%20sobre%20un%20modelo%20en%20Sneaker%20Store`, '_blank');
+        }
+
+        // Chatbot NLP Logic
+        function toggleChatbot() {
+            document.getElementById('chatWindow').classList.toggle('hidden');
+        }
+
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            appendChatMessage('user', msg);
+            input.value = '';
+
+            setTimeout(() => {
+                processNlpQuery(msg);
+            }, 500);
+        }
+
+        function sendQuickReply(text) {
+            document.getElementById('chatInput').value = text;
+            handleChatSubmit(new Event('submit'));
+        }
+
+        function processNlpQuery(query) {
+            const q = query.toLowerCase();
+
+            // Case: Nike running under 2000
+            if (q.includes('nike') && (q.includes('2000') || q.includes('2,000') || q.includes('correr'))) {
+                const found = SNEAKERS.filter(s => s.brand === 'Nike' && s.price <= 2000);
+                if (found.length > 0) {
+                    appendChatMessage('bot', `¡Excelente elección! Encontré el siguiente modelo <b>Nike para correr</b> dentro de tu presupuesto de $2,000 MXN en talla 27:`);
+                    found.forEach(prod => appendProductCardToChat(prod));
+                } else {
+                    appendChatMessage('bot', `¡Perfecto! Te muestro los tenis Nike más accesibles de nuestro catálogo:`);
+                    appendProductCardToChat(SNEAKERS[0]);
+                }
+                return;
+            }
+
+            if (q.includes('samba')) {
+                const samba = SNEAKERS.find(s => s.name.includes('Samba'));
+                appendChatMessage('bot', `¡Por supuesto! El <b>Adidas Samba OG Cloud White</b> está disponible en stock:`);
+                if (samba) appendProductCardToChat(samba);
+                return;
+            }
+
+            if (q.includes('talla') || q.includes('tallas')) {
+                appendChatMessage('bot', `Manejamos numeración en centímetros (MX) desde la talla 25 hasta la 29 CM. Puedes seleccionar la talla exacta al dar clic en cualquier par.`);
+                return;
+            }
+
+            if (q.includes('whatsapp') || q.includes('numero') || q.includes('número')) {
+                appendChatMessage('bot', `Puedes contactar directamente a nuestro equipo por WhatsApp al número <b>${currentWspNumber}</b>.`);
+                return;
+            }
+
+            // Default NLP response
+            appendChatMessage('bot', `Entendido. Consultando la base de datos de TENIS STORE para productos que coincidan con tu búsqueda... Te sugiero explorar nuestro catálogo o escribir tu presupuesto exacto.`);
+        }
+
+        function appendProductCardToChat(product) {
+            const container = document.getElementById('chatMessages');
+            const html = `
+                <div class="bg-brand-card p-3 rounded-2xl border border-brand-cyan/30 my-2 space-y-2">
+                    <div class="flex gap-3 items-center">
+                        <img src="${product.image}" class="w-14 h-14 object-contain bg-black/40 p-1 rounded-xl">
+                        <div>
+                            <span class="text-[9px] text-brand-cyan font-bold uppercase">${product.brand}</span>
+                            <h5 class="text-xs font-bold text-white line-clamp-1">${product.name}</h5>
+                            <span class="text-xs font-mono font-bold text-white">$${product.price.toLocaleString()} MXN</span>
+                        </div>
+                    </div>
+                    <button onclick="addItemToCart(SNEAKERS.find(s => s.id === ${product.id}), 27)" class="w-full bg-brand-cyan hover:bg-brand-cyanHover text-black text-[11px] font-black py-2 rounded-xl transition">
+                        <i class="fa-solid fa-bag-shopping"></i> Agregar en Talla 27 MX
+                    </button>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function appendChatMessage(sender, text) {
+            const container = document.getElementById('chatMessages');
+            const isBot = sender === 'bot';
+
+            const html = `
+                <div class="flex gap-2.5 ${isBot ? '' : 'flex-row-reverse'}">
+                    <div class="w-7 h-7 rounded-full ${isBot ? 'bg-brand-cyan/20 text-brand-cyan' : 'bg-brand-red/20 text-brand-red'} flex items-center justify-center flex-shrink-0 text-xs font-bold">
+                        <i class="fa-solid ${isBot ? 'fa-robot' : 'fa-user'}"></i>
+                    </div>
+                    <div class="${isBot ? 'bg-brand-card rounded-tl-none' : 'bg-brand-cyan text-black font-semibold rounded-tr-none'} p-3 rounded-2xl border border-white/5 max-w-[85%] leading-relaxed">
+                        ${text}
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function linkExternalBlog() {
+            const url = document.getElementById('externalBlogUrl').value.trim();
+            if (url) {
+                showToast("¡Blog externo vinculado correctamente!");
+                window.open(url, '_blank');
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-x-72');
+            setTimeout(() => { toast.classList.add('translate-x-72'); }, 3000);
+        }
+    </script>
+</body>
+</html>
